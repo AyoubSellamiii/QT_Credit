@@ -47,6 +47,26 @@ private slots:
 
     void on_Tri_E_clicked();
 
+    void on_stats_clicked();
+
+    void on_stats_2_clicked();
+
+    void on_ajouter_A_clicked();
+
+    void on_tableView_2_doubleClicked(const QModelIndex &index);
+
+    void on_pushButton_2_clicked();
+
+    void on_lineEdit_2_textChanged(const QString &arg1);
+
+    void on_pushButton_3_clicked();
+
+    void on_Tri_A_clicked();
+
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_8_clicked();
+
 private:
     Ui::MainWindow *ui;
     Eleve etmp;

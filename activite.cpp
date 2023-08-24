@@ -125,6 +125,7 @@ bool Activite::modifier(int id)
     query.bindValue(":lieu", lieu);
     query.bindValue(":datte",datte);
     query.bindValue(":prix",prix_string);
+    query.bindValue(":id",res);
 
     return query.exec();
 }
