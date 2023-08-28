@@ -9,6 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableView->setModel(etmp.afficher());
     ui->tableView_2->setModel(atmp.afficher());
     ui->tableView_H->setModel(etmp.afficher_mod());
+    ui->tableView_Eleve->setModel(etmp.afficher());
+    ui->tableView_Activite->setModel(atmp.afficher());
+    ui->tableView_Participation->setModel(ptmp.afficher());
 }
 
 MainWindow::~MainWindow()
@@ -593,4 +596,68 @@ void MainWindow::on_pushButton_8_clicked()
 
                       chart->legend()->hide();
                       chartView->show();
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    int id_eleve;
+            id_eleve=ui->tableView_Eleve->model()->data(ui->tableView_Eleve->model()->index(ui->tableView_Eleve->currentIndex().row(),0)).toInt();
+            int id_activite;
+                    id_activite=ui->tableView_Activite->model()->data(ui->tableView_Activite->model()->index(ui->tableView_Activite->currentIndex().row(),0)).toInt();
+
+                    Participation p (id_eleve,id_activite,QDateTime::currentDateTime(),"non approuvee");
+                    bool test=p.ajouter();
+                    if(test){
+                        ui->tableView_Participation->setModel(ptmp.afficher());
+                                QMessageBox :: information (nullptr, QObject ::tr("OK"),
+                                             QObject ::tr("Ajout effectué\n"
+                                                          "click cancel to exit"),
+                                        QMessageBox:: Cancel);
+                    }
+                    else
+                        {
+                            QMessageBox::critical(nullptr,QObject::tr("not ok"),
+                                                 QObject::tr("try again.\n"
+                                                             "click cancel to exit."),QMessageBox::Cancel);
+                        }
+}
+
+void MainWindow::on_Refuser_clicked()
+{
+    bool i;
+               int id_del;
+               id_del=ui->tableView_Participation->model()->data(ui->tableView_Participation->model()->index(ui->tableView_Participation->currentIndex().row(),0)).toInt();
+               i=ptmp.supprimer(id_del);
+            if(i)
+                       {
+                           QMessageBox::information(nullptr, QObject::tr("database is open"),
+                                       QObject::tr("delete successful.\n"
+                                                   "Click Cancel to exit."), QMessageBox::Cancel);
+                           ui->tableView_Participation->setModel(ptmp.afficher());
+
+                       }
+                       else
+                          { QMessageBox::critical(nullptr, QObject::tr("database is not open"),
+                                       QObject::tr("delete failed.\n"
+                                                   "Click Cancel to exit."), QMessageBox::Cancel); }
+}
+
+void MainWindow::on_Approuver_clicked()
+{
+    bool i;
+    int id_del;
+    id_del=ui->tableView_Participation->model()->data(ui->tableView_Participation->model()->index(ui->tableView_Participation->currentIndex().row(),0)).toInt();
+    i=ptmp.modifier_e(id_del);
+    if(i)
+               {
+                   QMessageBox::information(nullptr, QObject::tr("database is open"),
+                               QObject::tr("Approuvee succes .\n"
+                                           "Click Cancel to exit."), QMessageBox::Cancel);
+                   ui->tableView_Participation->setModel(ptmp.afficher());
+
+               }
+               else
+                  { QMessageBox::critical(nullptr, QObject::tr("database is not open"),
+                               QObject::tr("Approuver failed.\n"
+                                           "Click Cancel to exit."), QMessageBox::Cancel); }
 }

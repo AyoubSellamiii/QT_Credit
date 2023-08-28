@@ -67,6 +67,12 @@ private slots:
 
     void on_pushButton_8_clicked();
 
+    void on_pushButton_4_clicked();
+
+    void on_Refuser_clicked();
+
+    void on_Approuver_clicked();
+
 private:
     Ui::MainWindow *ui;
     Eleve etmp;
