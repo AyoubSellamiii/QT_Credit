@@ -19,6 +19,7 @@
 #include <QPrinter>
 #include <QPrinterInfo>
 #include <QPrintDialog>
+#include"sms.h"
 
 namespace Ui {
 class MainWindow;

@@ -613,6 +613,19 @@ void MainWindow::on_pushButton_4_clicked()
                                              QObject ::tr("Ajout effectué\n"
                                                           "click cancel to exit"),
                                         QMessageBox:: Cancel);
+                                std::string apiKey = "e6c2d473";
+                                               std::string apiSecret = "89XeibSGz2Td6whs";
+                                               std::string fromNumber = "Vonage";
+                                               std::string toNumber = ui->tableView_Eleve->model()->data(ui->tableView_Eleve->model()->index(ui->tableView_Eleve->currentIndex().row(),6)).toString().toStdString();
+                                               std::string message = "Reservation";
+
+                                               SMS sms(apiKey, apiSecret, fromNumber);
+                                               if (sms.sendSMS(toNumber, message)) {
+                                                   printf("SMS sent successfully\n");
+                                               }
+                                               else {
+                                                   printf("Failed to send SMS\n");
+                                               }
                     }
                     else
                         {

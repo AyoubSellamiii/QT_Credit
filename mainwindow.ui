@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -1260,21 +1260,6 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_9">
-     <attribute name="title">
-      <string>Historique</string>
-     </attribute>
-     <widget class="QTableView" name="tableView_H">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>70</y>
-        <width>751</width>
-        <height>341</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
     <widget class="QWidget" name="tab_5">
      <attribute name="title">
       <string>Participation</string>
@@ -1377,6 +1362,21 @@
       </property>
       <property name="text">
        <string>Refuser</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_9">
+     <attribute name="title">
+      <string>Historique</string>
+     </attribute>
+     <widget class="QTableView" name="tableView_H">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>70</y>
+        <width>751</width>
+        <height>341</height>
+       </rect>
       </property>
      </widget>
     </widget>
